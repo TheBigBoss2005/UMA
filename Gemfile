@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'test-unit'
   gem 'rspec-rails', '2.13.1'
   gem 'guard', '2.6.1'
   gem 'guard-rspec', '2.5.0'
