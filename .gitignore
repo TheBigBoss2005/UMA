@@ -38,6 +38,5 @@ build/
 # add original
 db/*.sqlite3
 log/*
-bin/*
 .DS_Store
 vendor/bundle/*
