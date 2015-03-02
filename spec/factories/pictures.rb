@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :picture do
-    path 'path'
-    original_path 'original_path'
-    original_width 960
-    original_height 960
+    sequence(:path) { |n| "/picture#{n}.jpg" }
+    sequence(:original_path) { |n| "/picture#{n}_original.jpg" }
+    original_width 1920
+    original_height 1920
   end
 end
