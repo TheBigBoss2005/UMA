@@ -4,9 +4,9 @@
   写真が存在しません
 <% else %>
   <%= form_tag(pictures_select_path, method: :get) do %>
-    <button id='left'><img src="/<%= @left.path %>"></button>
+    <button id='left'><img src="<%= @left.path %>"></button>
   <% end %>
   <%= form_tag(pictures_select_path, method: :get) do %>
-    <button id='right'><img src="/<%= @right.path %>"></button>
+    <button id='right'><img src="<%= @right.path %>"></button>
   <% end %>
 <% end %>

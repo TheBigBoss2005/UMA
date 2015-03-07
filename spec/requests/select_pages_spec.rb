@@ -9,7 +9,6 @@ describe 'PicturesSelectPages' do
     end
 
     describe 'ページタイトル' do
-      # title = '写真選定'
       it "は#{title}" do
         visit pictures_select_path
         expect(page).to have_title(title)
