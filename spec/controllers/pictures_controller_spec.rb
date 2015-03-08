@@ -1,17 +1,11 @@
 require 'spec_helper'
 
 describe PicturesController do
-  describe '#extract_picture' do
-    before do
-      10.times { FactoryGirl.create(:picture) }
-    end
-
-    describe '写真が登録済の時' do
-      it '写真がランダムに抽出される' do
+  describe '#select' do
+    describe '写真が未登録のとき' do
+      it '例外が発生すること' do
         get :select
-        @pictures = Picture.all
-        expect(@pictures).to include(assigns(:left))
-        expect(@pictures).to include(assigns(:right))
+        expect(get :select).to raise_error
       end
     end
   end

@@ -1,12 +1,7 @@
 <% provide(:title, '写真選定') %>
 
-<% if @left.nil? or @right.nil? %>
-  写真が存在しません
-<% else %>
+<% @pictures.each do |picture| %>
   <%= form_tag(pictures_select_path, method: :get) do %>
-    <button id='left'><img src="<%= @left.path %>"></button>
-  <% end %>
-  <%= form_tag(pictures_select_path, method: :get) do %>
-    <button id='right'><img src="<%= @right.path %>"></button>
+    <button id='<%= picture.id %>'><img src="<%= picture.path %>"></button>
   <% end %>
 <% end %>
