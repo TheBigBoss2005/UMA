@@ -4,8 +4,52 @@ describe PicturesController do
   describe '#select' do
     describe '写真が未登録のとき' do
       it '例外が発生すること' do
-        get :select
         expect(get :select).to raise_error
+      end
+    end
+  end
+
+  describe '#iine' do
+    describe '正常な入力のとき' do
+      before do
+        Picture.delete_all
+        3.times { FactoryGirl.create(:picture) }
+        @iine, @not_iine, @out_of_selection = Picture.all
+        params = {
+          iine_id: @iine.id,
+          picture_ids: [@iine.id, @not_iine.id]
+        }
+        post :iine, params
+      end
+
+      describe 'いいね対象の写真' do
+        it 'の「いいね回数」がカウントアップされる' do
+          expect { @iine.reload }.to change(@iine, :iine_count).by(1)
+        end
+
+        it 'の「トータル評価回数」がカウントアップされる' do
+          expect { @iine.reload }.to change(@iine, :total_count).by(1)
+        end
+      end
+
+      describe 'いいね対象でない写真' do
+        it 'の「いいね回数」は変化しない' do
+          expect { @not_iine.reload }.not_to change(@not_iine, :iine_count)
+        end
+
+        it 'の「トータル評価回数」がカウントアップされる' do
+          expect { @not_iine.reload }.to change(@not_iine, :total_count).by(1)
+        end
+      end
+
+      describe '選定対象外の写真' do
+        it 'の「いいね回数」は変化しない' do
+          expect { @out_of_selection.reload }.not_to change(@out_of_selection, :iine_count)
+        end
+
+        it 'の「トータル評価回数」は変化しない' do
+          expect { @out_of_selection.reload }.not_to change(@out_of_selection, :total_count)
+        end
       end
     end
   end
