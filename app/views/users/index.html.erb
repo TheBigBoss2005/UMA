@@ -1,0 +1,25 @@
+<% provide(:title, 'あなたは誰？') %>
+<%= render 'shared/header', link: false %>
+<div class="container">
+	<h2 class="text-center">あなたは誰？</h2>
+	<br>
+	<% @users.each do |user| %>
+		<div class="row user-line <%= user.id.even? ? 'bg-primary' : 'bg-success' %>">
+			<div class="col-xs-6 col-md-6 text-center">
+				<%= image_tag(user.icon, class: 'icon pull-left') %>
+				<div class="name"><%= user.name %></div>
+			</div>
+			<div class="col-xs-6 col-md-6">
+				写真を <b style="font-size: 30px;"><%= user.selection_count %></b> 枚選んでいます
+			</div>
+			<!-- 余裕があればランキング出して星の数でランキングを表現したい
+			<div class="col-xs-6 col-md-4">
+				<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+			</div>
+			-->
+			<%= form_tag(user_path(user.id), method: :get, id: 'select_user') do %>
+				<%= submit_tag '', class: 'hide' %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
