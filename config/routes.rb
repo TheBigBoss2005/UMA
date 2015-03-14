@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'users#index'
   resources :users, only: ['show']
-  get 'pictures/select'
+  get 'select', to: 'pictures#select'
+  post 'iine', to: 'pictures#iine'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

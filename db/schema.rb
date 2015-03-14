@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20150310234647) do
     t.datetime "date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "iine_count"
+    t.integer  "total_count"
+    t.boolean  "choosed"
   end
 
   create_table "users", force: :cascade do |t|

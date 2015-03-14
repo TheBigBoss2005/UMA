@@ -6,10 +6,13 @@ describe Picture do
   subject { @picture }
 
   it { expect(subject).to respond_to(:path) }
+  it { expect(subject).to respond_to(:iine_count) }
+  it { expect(subject).to respond_to(:total_count) }
+  it { expect(subject).to respond_to(:choosed) }
+  it { expect(subject).to respond_to(:date) }
   it { expect(subject).to respond_to(:original_path) }
   it { expect(subject).to respond_to(:original_width) }
   it { expect(subject).to respond_to(:original_height) }
-  # 各カウント及び確定フラグの実装は未
 
   it { expect(Picture).to respond_to(:extract) }
 
