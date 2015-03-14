@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228144027) do
+ActiveRecord::Schema.define(version: 20150309125553) do
 
   create_table "pictures", force: :cascade do |t|
     t.string   "path"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20150228144027) do
     t.datetime "date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "iine_count"
+    t.integer  "total_count"
+    t.boolean  "choosed"
   end
 
 end

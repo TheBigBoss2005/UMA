@@ -1,7 +1,10 @@
 <% provide(:title, '写真選定') %>
 
-<% @pictures.each do |picture| %>
-  <%= form_tag(pictures_select_path, method: :get) do %>
-    <button id='<%= picture.id %>'><img src="<%= picture.path %>"></button>
+<%= form_tag(iine_path, method: :post) do %>
+  <% @pictures.each do |picture| %>
+    <input type='hidden' class='picture_ids' name='picture_ids[]' value='<%= picture.id %>'>
+    <button id='<%= picture.id %>' name='iine_id' value='<%= picture.id %>'>
+      <img src="<%= picture.path %>">
+    </button>
   <% end %>
 <% end %>
