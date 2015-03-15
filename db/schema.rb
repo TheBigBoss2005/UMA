@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20150310234647) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                        null: false
-    t.string   "icon"
+    t.string   "name",                                     null: false
+    t.string   "icon",            default: "no-image.jpg"
     t.integer  "selection_count", default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
 end
