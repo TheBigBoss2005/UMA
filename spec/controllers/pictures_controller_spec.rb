@@ -53,4 +53,14 @@ describe PicturesController do
       end
     end
   end
+  describe '#choose' do
+    before do
+      @picture = FG.create(:picture)
+    end
+    it 'はchooseがトグルされること' do
+      expect(@picture.choosed).to be_false
+      post :choose, id: @picture.id
+      expect(Picture.find(@picture.id).choosed).to be_true
+    end
+  end
 end

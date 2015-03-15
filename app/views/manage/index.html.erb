@@ -1,0 +1,6 @@
+<% provide(:title, '管理画面選択') %>
+<%= render 'shared/header', link: true %>
+
+<div class="container">
+	<%= link_to "管理画面へ移動する", { controller: "manage", action: "list" }, class: 'btn btn-default' %>
+</div>

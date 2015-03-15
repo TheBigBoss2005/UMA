@@ -1,0 +1,38 @@
+<% provide(:title, '写真選定') %>
+<%= render 'shared/header', link: true %>
+
+<div class="container">
+	<pre>この画面でアルバムに掲載する写真を確定しましょう<br>この画面はPCで見ることをおすすめします<br>ロジック: いいね * 2 / 総表示数の大きい順、同着の場合はいいね数の大きい順</pre>
+	<table class="table table-bordered text-center bg-default">
+		<thead>
+			<tr>
+				<th class="text-center">ランキング</th>
+				<th class="text-center">写真</th>
+				<th class="text-center">総表示数</th>
+				<th class="text-center">総いいね数</th>
+				<th class="text-center">スコア</th>
+				<th class="text-center">確定？</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @pictures.each.with_index(1) do |picture, i| %>
+			<tr>
+				<td><%= i %></td>
+				<td><%= image_tag(picture.path, class: 'uma-thumbnail') %></td>
+				<td><%= picture.total_count %></td>
+				<td><%= picture.iine_count %></td>
+				<td><%= picture.score %></td>
+				<td>
+					<% if picture.choosed %>
+					<div class="bold">確定済み ヽ( ´￢`)ノ ﾜ～ｲ !!</div>
+					<button type="button" class="btn btn-sm btn-warning cancel">確定を取り消し</button>
+					<% else %>
+					<button type="button" class="btn btn-sm btn-danger choose">確定</button>
+					<% end %>
+					<input type="hidden" value="<%= picture.id %>">
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
