@@ -3,6 +3,7 @@
 <div class="container">
 	<h2 class="text-center">あなたは誰？</h2>
 	<br>
+	<pre>TBBアルバム作成のために写真を選びましょう。誰か選択した後に写真が2枚ずつ表示されるので、お好きな写真を選んでください。<br>どうしても写真が選べない場合は選べないよボタンを押しましょう。</pre>
 	<% @users.each do |user| %>
 		<div class="row user-line <%= user.id.even? ? 'bg-primary' : 'bg-success' %>">
 			<div class="col-xs-6 col-md-6 text-center">
