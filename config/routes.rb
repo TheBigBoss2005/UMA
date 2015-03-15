@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'users#index'
+  resources :users, only: ['show']
   get 'select', to: 'pictures#select'
   post 'iine', to: 'pictures#iine'
 

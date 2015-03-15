@@ -6,6 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.delete_all
+[
+  { name: '19861115', icon: 'https://avatars2.githubusercontent.com/u/7549216?v=3&s=400' },
+  { name: 'ken-aio', icon: 'https://avatars1.githubusercontent.com/u/3462833?v=3&s=460' },
+  { name: 'イメージない子' }
+].each do |user|
+  User.create(user)
+end
 Picture.delete_all
 (1..7).each do |n|
   Picture.create(
