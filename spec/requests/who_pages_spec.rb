@@ -22,10 +22,6 @@ describe 'WhoPages' do
           expect(page).to have_title('写真選定')
         end
       end
-
-      it 'はユーザ情報が保持される' do
-        pending 'cookieなどにユーザトークンが入っていることを確認する'
-      end
     end
   end
 end
