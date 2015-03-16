@@ -1,10 +1,16 @@
 <% provide(:title, '写真選定') %>
-
-<%= form_tag(iine_path, method: :post) do %>
-  <% @pictures.each do |picture| %>
-    <input type='hidden' class='picture_ids' name='picture_ids[]' value='<%= picture.id %>'>
-    <button id='<%= picture.id %>' name='iine_id' value='<%= picture.id %>'>
-      <img src="<%= picture.path %>">
-    </button>
-  <% end %>
-<% end %>
+<%= render 'shared/header', link: true %>
+<div class="container">
+  <div class="row">
+    <%= form_tag(iine_path, method: :post) do %>
+      <% @pictures.each do |picture| %>
+        <input type='hidden' class='picture_ids' name='picture_ids[]' value='<%= picture.id %>'>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+          <button id='<%= picture.id %>' name='iine_id' value='<%= picture.id %>'>
+            <img src="<%= picture.path %>">
+          </button>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
