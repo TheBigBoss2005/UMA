@@ -15,9 +15,9 @@
     <% if link %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">あなたは誰？</a></li>
-        <li><a href="#">写真を選ぶ</a></li>
-        <li><a href="#">管理画面</a></li>
+        <li><%= link_to "あなたは誰", :controller => "users", :action => "index" %></li>
+        <li><%= link_to "写真を選ぶ", :controller => "pictures", :action => "select" %></li>
+        <li><%= link_to "管理画面", :controller => "manage", :action => "index" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
     <% end %>
