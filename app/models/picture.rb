@@ -14,7 +14,8 @@ class Picture < ActiveRecord::Base
   end
 
   def self.iine2_total(num)
-    limit(num).order('iine_count * 2 / total_count desc, iine_count desc')
+    # 0除算を避けるためにtotal_countに+1して除算している
+    limit(num).order('iine_count * 2 + 1 / (total_count + 1) desc, iine_count desc')
   end
 
   private_class_method :random, :iine2_total
