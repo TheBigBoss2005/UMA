@@ -14,4 +14,13 @@ class PicturesController < ApplicationController
 
     redirect_to select_path
   end
+
+  def choose
+    picture = Picture.find_by(id: params[:id])
+    if picture.toggle(:choosed).save
+      render json: { success: true }, status: :ok
+    else
+      render json: { success: false }, status: :ok
+    end
+  end
 end
