@@ -41,7 +41,7 @@ describe 'PicturesSelectPages' do
         it '２つのボタンが表示される' do
           visit root_path
           find('input[type=submit]').click
-          expect(page.all('button').count).to be_equal(2)
+          expect(page.all('button[name=iine_id]').count).to be_equal(2)
         end
       end
 
