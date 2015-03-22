@@ -21,8 +21,9 @@ class Picture < ActiveRecord::Base
 
     def total_choosed(year = nil)
       if year
-        date = Date.new(year)
-        where(choosed: true, date: date..date.yesterday.next_year).count
+        from_date = Date.new(year) + 3.month
+        to_date = Date.new(year).yesterday.next_year + 3.month - 1.day
+        where(choosed: true, date: from_date..to_date).count
       else
         where(choosed: true).count
       end
