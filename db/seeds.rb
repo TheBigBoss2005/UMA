@@ -27,3 +27,15 @@ Picture.delete_all
     original_height: 1920
   )
 end
+(1..20).each do |n|
+  Picture.create(
+    path: "/samples/sample#{n}_s.jpg",
+    iine_count: 0,
+    total_count: 0,
+    choosed: false,
+    date: '2015/04/01',
+    original_path: "/samples/sample#{n}.jpg",
+    original_width: 1920,
+    original_height: 1920
+  )
+end
