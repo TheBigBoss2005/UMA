@@ -73,10 +73,15 @@ describe PicturesController do
     before do
       @picture = FG.create(:picture)
     end
-    it 'はchooseがトグルされること' do
+    it 'はchooseがトグルされて確定写真の総数が返却されること' do
       expect(@picture.choosed).to be_false
+
       post :choose, id: @picture.id
+
       expect(Picture.find(@picture.id).choosed).to be_true
+      result = JSON.parse(response.body)
+      expect(result['success']).to be_true
+      expect(result['total_choosed']).to eq(1)
     end
   end
 end
