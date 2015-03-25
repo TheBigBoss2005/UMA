@@ -18,7 +18,7 @@ class PicturesController < ApplicationController
   def choose
     picture = Picture.find_by(id: params[:id])
     if picture.toggle(:choosed).save
-      render json: { success: true }, status: :ok
+      render json: { success: true, total_choosed: Picture.total_choosed }, status: :ok
     else
       render json: { success: false }, status: :ok
     end

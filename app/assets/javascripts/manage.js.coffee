@@ -12,6 +12,7 @@ $ ->
 				$(@).parent().append(choose_true).on 'click', ->
 					alert('もう一度キャンセルするにはリロードしてください')
 				$(@).remove()
+				$('#total_choosed').html(res.total_choosed)
 			else
 				alert('エラーが発生しました。ログとか見てみてください')
 
@@ -23,6 +24,7 @@ $ ->
 					alert 'もう一度、確定するにはリロードしてください'
 				$(@).prev().remove()
 				$(@).remove()
+				$('#total_choosed').html(res.total_choosed)
 			else
 				alert('エラーが発生しました。ログとか見てみてください')
 
