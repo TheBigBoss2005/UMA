@@ -5,9 +5,9 @@
     <%= form_tag(iine_path, method: :post) do %>
       <% @pictures.each do |picture| %>
         <input type='hidden' class='picture_ids' name='picture_ids[]' value='<%= picture.id %>'>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" style="margin: 0; padding: 0">
           <button id='<%= picture.id %>' name='iine_id' value='<%= picture.id %>'>
-            <img src="<%= picture.path %>">
+            <img class="img-responsive" src="<%= picture.path %>">
           </button>
         </div>
       <% end %>
