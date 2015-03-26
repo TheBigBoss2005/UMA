@@ -1,8 +1,8 @@
 <% provide(:title, '写真選定') %>
 <%= render 'shared/header', link: true %>
 <div class="container">
-  <div class="row">
-    <%= form_tag(iine_path, method: :post) do %>
+  <%= form_tag(iine_path, method: :post) do %>
+    <div class="row">
       <% @pictures.each do |picture| %>
         <input type='hidden' class='picture_ids' name='picture_ids[]' value='<%= picture.id %>'>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" style="margin: 0; padding: 0">
@@ -11,6 +11,11 @@
           </button>
         </div>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+    <div class="row">
+      <button id='neither' name='neither' value='true' class='btn btn-primary btn-block'>
+        どちらも不要
+      </button>
+    </div>
+  <% end %>
 </div>
