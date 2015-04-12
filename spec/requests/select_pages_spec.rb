@@ -49,6 +49,12 @@ describe 'PicturesSelectPages' do
           find('input[type=submit]').click
           expect(page.all('button[name=neither]').count).to be_equal(1)
         end
+
+        it '元画像へのリンクが表示される' do
+          visit root_path
+          find('input[type=submit]').click
+          expect(page.all("a[class='btn btn-info']").count).to be_equal(2)
+        end
       end
 
       (0..2).each do |n|
