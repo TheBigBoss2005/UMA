@@ -17,11 +17,15 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "あなたは誰", :controller => "users", :action => "index" %></li>
         <% if controller.controller_name == 'pictures' %>
-          <li class="active"><a href="#">写真を選ぶ</a></li>
+          <li class="active"><a href="#"><span class="text-success">写真を選ぶ</span></a></li>
         <% else %>
           <li><%= link_to "写真を選ぶ", :controller => "pictures", :action => "select" %></li>
         <% end %>
-        <li><%= link_to "管理画面", :controller => "manage", :action => "index" %></li>
+        <% if controller.controller_name == 'manage' %>
+          <li class="active"><a href="#"><span class="text-success">管理画面</span></a></li>
+        <% else %>
+          <li><%= link_to "管理画面", :controller => "manage", :action => "index" %></li>
+        <% end%>
       </ul>
     </div><!-- /.navbar-collapse -->
     <% end %>
