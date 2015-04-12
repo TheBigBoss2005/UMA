@@ -34,7 +34,7 @@ end
     total_count: 0,
     choosed: false,
     date: '2015/04/01',
-    original_path: "/samples/sample#{n}.jpg",
+    original_path: "/samples/original/sample#{n}.jpg",
     original_width: 1920,
     original_height: 1920
   )
