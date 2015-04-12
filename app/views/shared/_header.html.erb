@@ -16,7 +16,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to "あなたは誰", :controller => "users", :action => "index" %></li>
-        <li><%= link_to "写真を選ぶ", :controller => "pictures", :action => "select" %></li>
+        <% if controller.controller_name == 'pictures' %>
+          <li class="active"><a href="#">写真を選ぶ</a></li>
+        <% else %>
+          <li><%= link_to "写真を選ぶ", :controller => "pictures", :action => "select" %></li>
+        <% end %>
         <li><%= link_to "管理画面", :controller => "manage", :action => "index" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
