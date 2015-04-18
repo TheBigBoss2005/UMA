@@ -7,7 +7,16 @@ class Picture < ActiveRecord::Base
     end
 
     def random(count)
-      all.to_a.sample(count)
+      all_pics = all.to_a
+      zero_pics = where(total_count: 0).to_a
+      case zero_pics.count
+      when 0
+        all_pics.sample(count)
+      when 1..(count - 1)
+        (zero_pics << all_pics.sample(count - zero_pics.count)).shuffle
+      else
+        zero_pics.sample(count)
+      end
     end
 
     def ranking(num = 100)
