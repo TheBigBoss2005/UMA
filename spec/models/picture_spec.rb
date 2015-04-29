@@ -35,7 +35,8 @@ describe Picture do
 
     context '評価回数が0の写真を含まない場合' do
       it 'はある条件に応じて写真を抽出する' do
-        sample = FactoryGirl.create(:picture)
+        2.times { FactoryGirl.create(:picture) }
+        sample = Picture.first
         pictures = Picture.extract
         expect(pictures).to include(sample)
       end
