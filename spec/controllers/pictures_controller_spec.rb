@@ -4,7 +4,7 @@ describe PicturesController do
   describe '#select' do
     describe '写真が未登録のとき' do
       it '例外が発生すること' do
-        expect(get :select).to raise_error
+        expect { get :select }.to raise_error
       end
     end
   end
