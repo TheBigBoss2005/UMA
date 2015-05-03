@@ -24,10 +24,22 @@ describe Picture do
   end
 
   describe '#extract' do
-    it 'はある条件に応じて写真を抽出する' do
-      sample = FactoryGirl.create(:picture)
-      pictures = Picture.extract
-      expect(pictures).to include(sample)
+    context '評価回数が0の写真を含む場合' do
+      it 'はその写真が優先して抽出される' do
+        zero1  = FactoryGirl.create(:picture, total_count: 0)
+        zero2  = FactoryGirl.create(:picture, total_count: 0)
+        pictures = Picture.extract
+        expect(pictures).to include(zero1, zero2)
+      end
+    end
+
+    context '評価回数が0の写真を含まない場合' do
+      it 'はある条件に応じて写真を抽出する' do
+        2.times { FactoryGirl.create(:picture) }
+        sample = Picture.first
+        pictures = Picture.extract
+        expect(pictures).to include(sample)
+      end
     end
   end
 

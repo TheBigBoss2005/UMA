@@ -29,9 +29,9 @@ describe 'PicturesSelectPages' do
         it '写真が未登録である旨のメッセージが表示される' do
           Picture.delete_all
           visit root_path
-          find('input[type=submit]').click
           pending 'メッセージ表示はエラーページにて実施(未実装)'
-          expect(page).to have_content('写真が存在しません')
+          expect { find('input[type=submit]').click }.to raise_error
+          # expect(page).to have_content('写真が存在しません')
         end
       end
     end

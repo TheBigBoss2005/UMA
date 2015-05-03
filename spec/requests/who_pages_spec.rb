@@ -15,7 +15,11 @@ describe 'WhoPages' do
     end
 
     describe 'ユーザ選択時' do
-      before { visit root_path }
+      before do
+        2.times { FG.create(:picture) }
+        visit root_path
+      end
+
       it 'は写真を選ぶ画面に遷移する' do
         all('input[type=submit]').each do |submit|
           submit.click

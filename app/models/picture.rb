@@ -7,7 +7,19 @@ class Picture < ActiveRecord::Base
     end
 
     def random(count)
-      all.to_a.sample(count)
+      zero_pic_ids = where(total_count: 0).pluck(:id).to_a
+      case zero_pic_ids.count
+      when 0
+        random_from_all(count)
+      when 1..(count - 1)
+        where(id: zero_pic_ids.sample(count)) << random_from_all(count - zero_pic_ids.count)
+      else
+        where(id: zero_pic_ids.sample(count))
+      end
+    end
+
+    def random_from_all(count)
+      where(id: (first.id..last.id).to_a.sample(count)) if self.count > 0
     end
 
     def ranking(num = 100)
@@ -30,7 +42,7 @@ class Picture < ActiveRecord::Base
     end
   end
 
-  private_class_method :random, :iine2_total
+  private_class_method :random, :random_from_all, :iine2_total
 
   def score
     total_count == 0 ? 0 : iine_count * 2 / total_count
