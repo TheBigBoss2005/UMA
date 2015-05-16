@@ -40,7 +40,7 @@
 			<tr>
 				<td><%= i %></td>
 				<td><%= picture.date ? picture.date.strftime("%Y/%m/%d") : '-' %></td>
-				<td><img class="uma-thumbnail" src="<%= picture.path %>"></td>
+				<td><img class="uma-thumbnail" src="../<%= picture.path %>"></td>
 				<td><%= picture.total_count %></td>
 				<td><%= picture.iine_count %></td>
 				<td><%= picture.score %></td>
