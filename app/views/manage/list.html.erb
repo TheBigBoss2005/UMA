@@ -3,10 +3,31 @@
 
 <div class="container">
 	<pre>この画面でアルバムに掲載する写真を確定しましょう<br>この画面はPCで見ることをおすすめします<br>ロジック: いいね * 2 / 総表示数の大きい順、同着の場合はいいね数の大きい順</pre>
+	<button class="btn btn-xs btn-warning total-picture" type="button">
+		確定写真: <span class="badge" id="total_choosed"><%= @total_choosed %></span> 枚
+	</button>
+	<label for="">各期間別の総決定写真数（更新する場合はリロードしてね）</label>
+	<table class="table table-bordered text-center bg-default">
+		<thead>
+			<tr>
+				<% @years_choosed.each do |year, total| %>
+				<th class="text-center"><%= year %> 年度</th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<% @years_choosed.each do |year, total| %>
+				<td><%= total %> 枚</td>
+				<% end %>
+			</tr>
+		</tbody>
+	</table>
 	<table class="table table-bordered text-center bg-default">
 		<thead>
 			<tr>
 				<th class="text-center">ランキング</th>
+				<th class="text-center">撮影日</th>
 				<th class="text-center">写真</th>
 				<th class="text-center">総表示数</th>
 				<th class="text-center">総いいね数</th>
@@ -18,6 +39,7 @@
 			<% @pictures.each.with_index(1) do |picture, i| %>
 			<tr>
 				<td><%= i %></td>
+				<td><%= picture.date ? picture.date.strftime("%Y/%m/%d") : '-' %></td>
 				<td><%= image_tag(picture.path, class: 'uma-thumbnail') %></td>
 				<td><%= picture.total_count %></td>
 				<td><%= picture.iine_count %></td>

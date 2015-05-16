@@ -29,9 +29,9 @@ describe 'PicturesSelectPages' do
         it '写真が未登録である旨のメッセージが表示される' do
           Picture.delete_all
           visit root_path
-          find('input[type=submit]').click
           pending 'メッセージ表示はエラーページにて実施(未実装)'
-          expect(page).to have_content('写真が存在しません')
+          expect { find('input[type=submit]').click }.to raise_error
+          # expect(page).to have_content('写真が存在しません')
         end
       end
     end
@@ -41,12 +41,24 @@ describe 'PicturesSelectPages' do
         it '２つのボタンが表示される' do
           visit root_path
           find('input[type=submit]').click
-          expect(page.all('button').count).to be_equal(2)
+          expect(page.all('button[name=iine_id]').count).to be_equal(2)
+        end
+
+        it 'どちらも不要ボタンが表示される' do
+          visit root_path
+          find('input[type=submit]').click
+          expect(page.all('button[name=neither]').count).to be_equal(1)
+        end
+
+        it '元画像へのリンクが表示される' do
+          visit root_path
+          find('input[type=submit]').click
+          expect(page.all("a[class='btn btn-info']").count).to be_equal(2)
         end
       end
 
-      (0..1).each do |n|
-        describe "#{n + 1}番目のボタン押下時" do
+      (0..2).each do |n|
+        describe "#{n + 1}番目のボタン('どちらも不要'ボタン含む)押下時" do
           let(:button) { page.all('button')[n] }
           let(:click) { button.click }
 

@@ -4,7 +4,7 @@ describe PicturesController do
   describe '#select' do
     describe '写真が未登録のとき' do
       it '例外が発生すること' do
-        expect(get :select).to raise_error
+        expect { get :select }.to raise_error
       end
     end
   end
@@ -73,10 +73,15 @@ describe PicturesController do
     before do
       @picture = FG.create(:picture)
     end
-    it 'はchooseがトグルされること' do
+    it 'はchooseがトグルされて確定写真の総数が返却されること' do
       expect(@picture.choosed).to be_false
+
       post :choose, id: @picture.id
+
       expect(Picture.find(@picture.id).choosed).to be_true
+      result = JSON.parse(response.body)
+      expect(result['success']).to be_true
+      expect(result['total_choosed']).to eq(1)
     end
   end
 end
