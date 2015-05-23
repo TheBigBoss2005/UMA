@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
   def select
     redirect_to root_path unless session[:user_id]
     @pictures = Picture.extract
+    @user = User.find_by(id: session[:user_id])
     fail '写真がありません' unless @pictures
   end
 
