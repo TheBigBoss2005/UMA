@@ -2,16 +2,16 @@
 <%= render 'shared/header', link: true %>
 <div class="container">
   <%= form_tag(iine_path, method: :post) do %>
-    <div class="row">
+    <div class="row picture-responsive">
       <% @pictures.each do |picture| %>
         <input type='hidden' class='picture_ids' name='picture_ids[]' value='<%= picture.id %>'>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" style="margin: 0; padding: 0">
+        <div class="picture col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
           <div>
             <button id='<%= picture.id %>' name='iine_id' value='<%= picture.id %>'>
               <img class="img-responsive" src="<%= picture.path %>">
             </button>
           </div>
-          <div>
+          <div class="btn-up">
             <a class="btn btn-info" href="<%= picture.original_path %>" target="blank">拡大表示</a>
           </div>
         </div>
