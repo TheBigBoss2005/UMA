@@ -12,7 +12,7 @@ class Picture < ActiveRecord::Base
       when 0
         random_from_all(count)
       when 1..(count - 1)
-        where(id: zero_pic_ids.sample(count)) << random_from_all(count - zero_pic_ids.count)
+        where(id: zero_pic_ids.sample(count)).push(random_from_all(count - zero_pic_ids.count).to_a).flatten
       else
         where(id: zero_pic_ids.sample(count))
       end
