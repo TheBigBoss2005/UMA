@@ -10,6 +10,7 @@
 		確定写真: <span class="badge" id="total_choosed"><%= @total_choosed %></span> 枚
 	</button>
 	<label for="">各期間別の総決定写真数（更新する場合はリロードしてね）</label>
+	<%= paginate(@pictures) %>
 	<table class="table table-bordered text-center bg-default">
 		<thead>
 			<tr>
@@ -26,6 +27,9 @@
 			</tr>
 		</tbody>
 	</table>
+	<%= link_to '確定写真のみを表示', manage_list_path(only_choosed: true), class: 'btn btn-xs btn-primary' %>
+	<%= link_to '全ての写真を表示', manage_list_path, class: 'btn btn-xs btn-info' %>
+	<br>
 	<table class="table table-bordered text-center bg-default">
 		<thead>
 			<tr>
@@ -60,4 +64,5 @@
 			<% end %>
 		</tbody>
 	</table>
+	<%= paginate(@pictures) %>
 </div>

@@ -22,13 +22,17 @@ class Picture < ActiveRecord::Base
       where(id: (first.id..last.id).to_a.sample(count)) if self.count > 0
     end
 
-    def ranking(num = 100)
-      iine2_total(num)
+    def ranking(per_page = 100, page_num = 1)
+      iine2_total(per_page, page_num)
     end
 
-    def iine2_total(num)
+    def choosed
+      iine2_total(100, 1).where(choosed: true)
+    end
+
+    def iine2_total(per_page = 100, page_num = 1)
       # 0除算を避けるためにtotal_countに+1して除算している
-      limit(num).order('((iine_count * 1000) * 2 + 1) / (total_count + 1) desc, iine_count desc')
+      order('((iine_count * 1000) * 2 + 1) / (total_count + 1) desc, iine_count desc').page(page_num).per(per_page)
     end
 
     def total_choosed(year = nil)

@@ -17,6 +17,7 @@ gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'execjs'
 gem 'less-rails'
+gem 'kaminari'
 
 group :development, :test do
   gem 'sqlite3'
