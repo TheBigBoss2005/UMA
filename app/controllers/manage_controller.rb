@@ -1,7 +1,7 @@
 class ManageController < ApplicationController
   def list
     only_choosed = params[:only_choosed] == 'true'
-    page_size = 3
+    page_size = 30
     @ranking_offset = calc_ranking_offset(page_size)
     @pictures = only_choosed ? Picture.choosed : Picture.ranking(page_size, params[:page])
     @total_choosed = Picture.total_choosed
