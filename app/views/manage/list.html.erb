@@ -45,7 +45,7 @@
 		<tbody>
 			<% @pictures.each.with_index(1) do |picture, i| %>
 			<tr>
-				<td><%= i %></td>
+				<td><%= i + @ranking_offset %></td>
 				<td><%= picture.date ? picture.date.strftime("%Y/%m/%d") : '-' %></td>
 				<td><img class="uma-thumbnail" src="../<%= picture.path %>"></td>
 				<td><%= picture.total_count %></td>
