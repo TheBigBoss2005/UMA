@@ -67,7 +67,7 @@ describe Picture do
       @picture2 = FG.create(:picture, iine_count: 0, total_count: 0)
     end
     it 'は適切な値が返却されること' do
-      expect(@picture1.score).to eq(2)
+      expect(@picture1.score).to eq(1000)
       expect(@picture2.score).to eq(0)
     end
   end

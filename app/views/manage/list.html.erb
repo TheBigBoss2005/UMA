@@ -2,7 +2,10 @@
 <%= render 'shared/header', link: true %>
 
 <div class="container">
-	<pre>この画面でアルバムに掲載する写真を確定しましょう<br>この画面はPCで見ることをおすすめします<br>ロジック: いいね * 2 / 総表示数の大きい順、同着の場合はいいね数の大きい順</pre>
+  <pre>
+この画面でアルバムに掲載する写真を確定しましょう
+この画面はPCで見ることをおすすめします
+ロジック: ((いいね * 1000) * 2) + 1 / (総表示数の大きい + 1) 順、同着の場合はいいね数の大きい順</pre>
 	<button class="btn btn-xs btn-warning total-picture" type="button">
 		確定写真: <span class="badge" id="total_choosed"><%= @total_choosed %></span> 枚
 	</button>
